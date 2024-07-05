@@ -19,15 +19,7 @@
     "e2e:ui": "playwright test --ui",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "postinstall": "npx patch-package -y",
-    "preinstall": "npx only-allow yarn",
-    "clean": "clean:build",
-    "clean:build": "yarn run del-cli ./build/",
-    "clean:all": "yarn run clean:build && yarn run clean:next && yarn run clean:node",
-    "clean:ALL": "yarn run clean:all && yarn run clean:npm",
-    "clean:next": "yarn run del-cli .next",
-    "clean:next:cache": "yarn run del-cli .next/.cache",
-    "clean:node": "yarn run del-cli ./node_modules/",
-    "clean:npm": "npm cache clean --force && npm cache verify"
+    "preinstall": "npx only-allow yarn"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.1.1",
@@ -82,7 +74,6 @@
     "all-contributors-cli": "^6.24.0",
     "autoprefixer": "^10.4.14",
     "cross-env": "^7.0.3",
-    "del-cli": "^5.1.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "eslint-config-prettier": "^8.3.0",
@@ -109,7 +100,7 @@
     "vitest": "^0.32.0"
   },
   "engines": {
-    "node": ">=20.10.0"
+    "node": ">=18.15.0"
   },
   "packageManager": "yarn@1.22.19"
 }
