@@ -18,7 +18,7 @@ export function Authentication() {
             </h1>
             {
                 !encodedMessage && (
-                    <button className="buttonClement"
+                    <button className="buttonClementSignOk"
                         style={{ width: '200px' }}
                         onClick={async () => {
                             const signedMessage = await getWalletAuthentication(wallet, authMessage);
@@ -31,7 +31,7 @@ export function Authentication() {
             }
                         {
                 !encodedMessage && (
-                    <button className="buttonClementWarn"
+                    <button className="buttonClementSignKo"
                         style={{ width: '200px' }}
                         onClick={async () => {
                             const signedMessage = await getWalletAuthentication(wallet, fakeAuthMessage);
@@ -51,7 +51,7 @@ export function Authentication() {
                         <p className="clementSmallP">
                             {encodedMessage}
                         </p>
-                        <button
+                        <button className="buttonClementDecode"
                             style={{ width: '200px' }}
                             onClick={async () => {
                                 const isVerified = await verifyEncodedMessage(wallet, authMessage, encodedMessage);
@@ -66,7 +66,12 @@ export function Authentication() {
             {
                 canDecodeMessage !== null && (
                     <p>
-                        Can decode message: <b>{canDecodeMessage ? 'YES' : 'NO'}</b>
+                        Can decode message: <b>
+                        {canDecodeMessage ?
+                            <p className="clementOkP">YES</p>
+                            :
+                            <p className="clementKoP">NO</p>
+                        }</b>
                     </p>
                 )
             }
