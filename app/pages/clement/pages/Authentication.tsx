@@ -18,7 +18,7 @@ export function Authentication() {
             </h1>
             {
                 !encodedMessage && (
-                    <button
+                    <button className="buttonClement"
                         style={{ width: '200px' }}
                         onClick={async () => {
                             const signedMessage = await getWalletAuthentication(wallet, authMessage);
@@ -31,7 +31,7 @@ export function Authentication() {
             }
                         {
                 !encodedMessage && (
-                    <button
+                    <button className="buttonClementWarn"
                         style={{ width: '200px' }}
                         onClick={async () => {
                             const signedMessage = await getWalletAuthentication(wallet, fakeAuthMessage);
@@ -45,8 +45,11 @@ export function Authentication() {
             {
                 encodedMessage && (
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', alignItems: 'center' }}>
-                        <p>
-                            Signed message: <b>{encodedMessage}</b>
+                        <p className="">
+                            Signed message:
+                        </p>
+                        <p className="clementSmallP">
+                            {encodedMessage}
                         </p>
                         <button
                             style={{ width: '200px' }}

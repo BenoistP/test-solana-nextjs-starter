@@ -7,7 +7,7 @@ import { IDL, NEXT_PUBLIC_PROGRAM_ID } from "../imports/consts";
 if (!process.env.NEXT_PUBLIC_RPC_URL) {
     throw new Error("NEXT_PUBLIC_RPC_URL is required");
 }
-console.log('NEXT_PUBLIC_RPC_URL', process.env.NEXT_PUBLIC_RPC_URL);
+// console.log('NEXT_PUBLIC_RPC_URL', process.env.NEXT_PUBLIC_RPC_URL);
 
 const connection = new Connection(process.env.NEXT_PUBLIC_RPC_URL || "", "confirmed");
 // const program = new Program<Idl>(IDL as Idl, NEXT_PUBLIC_PROGRAM_ID, {

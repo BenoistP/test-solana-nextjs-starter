@@ -1,14 +1,23 @@
-// import '../styles/clement/clement-app.css'; // unused global style
+// import '../styles/clement/clement-app.css'; // global style import moved in app/pages/_app.tsx
 
 import { useWallet } from '@solana/wallet-adapter-react';
-import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+// import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
+import dynamic from 'next/dynamic';
+
+
 import { useEffect, useState } from 'react';
 import Balance from './clement/pages/Balance';
 import { Dashboard } from './clement/pages/Dashboard';
 import { getSolanaBalance } from '../helpers/solana.helper';
 
+const WalletMultiButtonDynamic = dynamic(
+  async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
+  { ssr: false }
+);
+
 function ClementApp() {
 
+  
   const wallet = useWallet();
   const [solanaBalance, setSolanaBalance] = useState<number | null>(null);
 
@@ -25,12 +34,13 @@ function ClementApp() {
   }, [wallet.publicKey]);
 
   return (
-    <div className="App">
-      <div className="header">
-        <div className='wallet'>
+    <div className="AppClement">
+      <div className="headerClement">
+        <div className='walletClement'>
           <Balance balance={solanaBalance}/>
-          <WalletMultiButton></WalletMultiButton>
-        </div>
+          {/* <WalletMultiButton/> */}
+          <WalletMultiButtonDynamic /> {/* instead of WalletMultiButton */}
+          </div>
       </div>
       <Dashboard />
     </div>

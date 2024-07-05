@@ -5,7 +5,6 @@ import IDL_JSON from "./idl/idl.json"
 export const IDL = IDL_JSON; 
 
 const programID = process.env.NEXT_PUBLIC_PROGRAM_ID||''
-console.log('NEXT_PUBLIC_PROGRAM_ID = ', programID)
 if (!programID) {
     console.error('NEXT_PUBLIC_PROGRAM_ID is not set')
     throw new Error('NEXT_PUBLIC_PROGRAM_ID is not set')

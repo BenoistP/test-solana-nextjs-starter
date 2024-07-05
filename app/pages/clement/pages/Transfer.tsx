@@ -27,7 +27,7 @@ export function Transfer() {
                 onChange={(e) => setDestination(e.target.value)}
                 placeholder="Destination"
             />
-            <button
+            <button className="buttonClement"
                 onClick={async () => {
                     if (amount > 0 && destination && wallet) {
                         const result = await transferSolana(wallet, new PublicKey(destination), amount);

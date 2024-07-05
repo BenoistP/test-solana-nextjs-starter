@@ -20,7 +20,7 @@ export function Account() {
             </h1>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '5px' }}>
                 <div>
-                    <label>
+                    <label className="labelClement">
                         Data
                     </label>
                     <input
@@ -31,7 +31,7 @@ export function Account() {
                     />
                 </div>
                 <div>
-                    <label>
+                    <label className="labelClement">
                         Age
                     </label>
                     <input
@@ -42,7 +42,7 @@ export function Account() {
                     />
                 </div>
                 <div>
-                    <label>
+                    <label className="labelClement">
                         taille
                     </label>
                     <input
