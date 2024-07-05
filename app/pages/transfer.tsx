@@ -49,16 +49,48 @@ export default function HomePage() {
   return (
     <div className="mx-auto my-20 flex w-full max-w-md flex-col gap-6 rounded-2xl p-6 shadow-card">
       <Typography as="h2" level="h6" className="font-bold">
-        Home
+        Transfer
       </Typography>
       <div className="flex flex-col gap-4">
         <div className="flex items-center justify-between gap-4">
           <Typography level="body4" color="secondary">
-            Todo
+            Sender
           </Typography>
+          <Typography level="body4" className="font-semibold">
+            {publicKey ? truncate(publicKey.toBase58(), 16, true) : "--"}
+          </Typography>
+        </div>
+        <Input value={receiver} onChange={(event) => setReceiver(event.target.value)} placeholder="Receiver address" />
+        <Input type="number" value={amount} onChange={(event) => setAmount(event.target.value)} placeholder="Amount" />
+        {connected ? (
+          <Button loading={loading} disabled={!receiver || !amount} onClick={submitTransaction}>
+            Send
+          </Button>
+        ) : (
+          <ConnectWalletButton />
+        )}
+        {result !== "idle" && (
+          <div
+            className={cn("rounded-xl p-4", {
+              "bg-success-100 text-success-900": result === "success",
+              "bg-error-100 text-error-900": result === "failed",
+            })}
+          >
+            {result === "success" ? (
+              <a
+                href={`https://explorer.solana.com/tx/${signature}?cluster=devnet`}
+                target="_blank"
+                className="underline"
+                rel="noreferrer"
+              >
+                View success transaction
+              </a>
+            ) : (
+              <p>Transaction failed</p>
+            )}
           </div>
+        )}
       </div>
     </div>
-
   )
 }

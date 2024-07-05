@@ -13,6 +13,10 @@ const MenuItems = [
     href: "/",
   },
   {
+    text: "Transfer",
+    href: "/transfer",
+  },
+  {
     text: "About",
     href: "/about",
   },

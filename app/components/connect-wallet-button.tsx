@@ -1,6 +1,6 @@
 import dynamic from "next/dynamic"
-import { cn } from "@/utils/cn"
 import { buttonVariants } from "./ui/button"
+import { cn } from "@/utils/cn"
 
 const WalletMultiButtonDynamic = dynamic(
   async () => (await import("@solana/wallet-adapter-react-ui")).WalletMultiButton,
