@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "cross-env FORCE_COLOR=1 next dev",
+    "dev": "yarn run dev:default",
+    "dev:open": "open http://localhost:3000 && yarn run dev",
+    "dev:default": "cross-env FORCE_COLOR=1 next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
