@@ -47,7 +47,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="mx-auto my-20 flex w-full max-w-md flex-col gap-6 rounded-2xl p-6 shadow-card">
+    <div className="mx-auto my-20 flex w-full max-w-md flex-col gap-6 rounded-2xl p-6">
       <Typography as="h2" level="h6" className="font-bold">
         Transfer
       </Typography>

@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 20px;
+  background-color: #525459;
+  min-width: calc(100vw - 40px);
+}
+
+.header .wallet {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}

@@ -32,6 +32,7 @@
     "clean:npm": "npm cache clean --force && npm cache verify"
   },
   "dependencies": {
+    "@coral-xyz/anchor": "0.29.0",
     "@hookform/resolvers": "^3.1.1",
     "@next/bundle-analyzer": "^14.2.4",
     "@radix-ui/react-aspect-ratio": "^1.0.3",
@@ -43,6 +44,7 @@
     "@semantic-release/github": "^9.0.0",
     "@semantic-release/npm": "^10.0.3",
     "@semantic-release/release-notes-generator": "^11.0.1",
+    "@solana/spl-token": "^0.4.7",
     "@solana/wallet-adapter-base": "^0.9.22",
     "@solana/wallet-adapter-react": "^0.15.32",
     "@solana/wallet-adapter-react-ui": "^0.9.31",
@@ -59,6 +61,7 @@
     "react-hook-form": "^7.44.3",
     "tailwind-merge": "^1.10.0",
     "tailwind-variants": "^0.1.8",
+    "tweetnacl": "^1.0.3",
     "zod": "^3.21.4"
   },
   "devDependencies": {
