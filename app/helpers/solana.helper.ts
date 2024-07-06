@@ -166,6 +166,7 @@ export const getInitializeAccountTransaction = async (publicKey: PublicKey, data
         ], 
         new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString())
       );
+      // return await program.methods.initialize(data, age, taille) // additonal parameter: taille
       return await program.methods.initialize(data, age, taille)
         .accounts({
             newAccount: accountPda,
@@ -175,6 +176,7 @@ export const getInitializeAccountTransaction = async (publicKey: PublicKey, data
         .transaction()
       } catch (error) {
         console.error(error);
+        alert('Error: ' + error);
         return null;
       }
 };
