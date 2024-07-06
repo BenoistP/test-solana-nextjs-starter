@@ -57,7 +57,7 @@ export function Account() {
             {
                 anchorWallet?.publicKey && (
                     <div style={{ display: 'flex', gap: '5px' }}>
-                        <button 
+                        <button className="buttonClementInfo"
                             onClick={async () => {
                                 if (anchorWallet.publicKey) {
                                     // const account = await getAccount(anchorWallet.publicKey)
@@ -75,7 +75,7 @@ export function Account() {
                         >
                             Get Account
                         </button>
-                        <button
+                        <button className="buttonClementAction"
                             onClick={async () => {
                                 if (anchorWallet.publicKey) {
                                     setSendingTransaction(true);
