@@ -1,4 +1,5 @@
-import { Typography } from "@/components/ui/typography"
+// import { Typography } from "@/components/ui/typography"
+import { Typography } from "@ui/typography"
 
 export default function HomePage() {
 

@@ -1,6 +1,7 @@
+import { getAccount, initializeAccount } from "@helpers/solana.helper";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
-import { getAccount, initializeAccount } from "../../../helpers/solana.helper";
+// import { getAccount, initializeAccount } from "../../../helpers/solana.helper";
 
 export function Account() {
 
