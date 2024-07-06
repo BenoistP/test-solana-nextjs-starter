@@ -10,11 +10,9 @@ if (!process.env.NEXT_PUBLIC_RPC_URL) {
 // console.log('NEXT_PUBLIC_RPC_URL', process.env.NEXT_PUBLIC_RPC_URL);
 
 const connection = new Connection(process.env.NEXT_PUBLIC_RPC_URL || "", "confirmed");
-// const program = new Program<Idl>(IDL as Idl, NEXT_PUBLIC_PROGRAM_ID, {
-//     connection,
-// });
-
 // "@coral-xyz/anchor": "0.29.0", changement dans la version 0.30+
+// https://www.anchor-lang.com/release-notes/0.30.0#account-resolution
+// https://solana.stackexchange.com/questions/13076/anchor-idl-different-incorrect-from-solana-playground-idl-generated
 const program = new Program<Idl>(IDL as Idl, NEXT_PUBLIC_PROGRAM_ID, {
   connection,
 });
