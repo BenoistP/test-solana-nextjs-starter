@@ -7,3 +7,9 @@
     @apply min-h-screen w-full text-gray-900 antialiased;
   }
 }
+
+/* btn icon */
+
+.btn-icon {
+  @apply inline-flex items-center align-top;
+}
