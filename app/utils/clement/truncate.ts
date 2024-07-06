@@ -1,3 +1,4 @@
+// eslint-disable-next-line @typescript-eslint/no-inferrable-types
 export default function truncate(str: string, num: number, middle: boolean = false, maskChar: string = ".") {
   if (str.length > num && str.length > 3) {
     if (!middle) {

@@ -3,7 +3,7 @@ import { Slot } from "@radix-ui/react-slot"
 import * as React from "react"
 import { Controller, ControllerProps, FieldPath, FieldValues, FormProvider, useFormContext } from "react-hook-form"
 import { Label } from "@/components/ui/label"
-import { cn } from "@/utils/cn"
+import { cn } from "@clement-utils/cn"
 
 const Form = FormProvider
 

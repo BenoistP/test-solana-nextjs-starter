@@ -1,10 +1,10 @@
 // import { Account } from "./Account";
 // import { Authentication } from "./Authentication";
 // import { Transfer } from "./Transfer";
+import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { Account } from "@clement-pages/Account";
 import { Authentication } from "@clement-pages/Authentication";
 import { Transfer } from "@clement-pages/Transfer";
-import { useAnchorWallet } from "@solana/wallet-adapter-react";
 
 export function Dashboard() {
 

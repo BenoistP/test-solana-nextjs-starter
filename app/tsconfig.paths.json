@@ -8,10 +8,13 @@
       "@helpers/*": ["helpers/*"],
       "@imports/*": ["imports/*"],
       "@pages/*": ["pages/*"],
-      "@clement-pages/*": ["pages/clement/pages/*"],
 
+      "@clement-pages/*": ["pages/clement/pages/*"],
+      "@clement-utils/*": ["utils/clement/*"],
+      "@clement-styles/*": ["styles/clement/*"],
+
+      "@config/*": ["config/*"],
       "@styles/*": ["styles/*"],
-      "@clement-styles/*": ["styles/clement/*"]
 
     //  "@components/*": ["components/*"],
       // "@hooks/*": ["components/hooks/*"],

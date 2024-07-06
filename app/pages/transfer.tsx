@@ -6,8 +6,8 @@ import ConnectWalletButton from "@/components/connect-wallet-button"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Typography } from "@/components/ui/typography"
-import { cn } from "@/utils/cn"
-import truncate from "@/utils/truncate"
+import { cn } from "@clement-utils/cn"
+import truncate from "@clement-utils/truncate"
 
 type ResultStatus = "idle" | "success" | "failed"
 

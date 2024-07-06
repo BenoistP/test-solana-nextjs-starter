@@ -158,6 +158,7 @@ export const getAccount = async (publicKey: PublicKey): Promise<any> => {
 // export const getInitializeAccountTransaction = async (publicKey: PublicKey, data: BN, age: BN): Promise<Transaction | null> => {
 export const getInitializeAccountTransaction = async (publicKey: PublicKey, data: BN, age: BN, taille: BN): Promise<Transaction | null> => {
     try {
+      console.debug(`getInitializeAccountTransaction publicKey: ${publicKey.toBase58()} data: ${data} age: ${age} taille: ${taille}`);
       const accountSeed = Buffer.from("account");
       const [accountPda] = PublicKey.findProgramAddressSync(
         [
@@ -167,7 +168,7 @@ export const getInitializeAccountTransaction = async (publicKey: PublicKey, data
         new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString())
       );
       // return await program.methods.initialize(data, age, taille) // additonal parameter: taille
-      return await program.methods.initialize(data, age, taille)
+      return await program.methods.initialize(data, age)
         .accounts({
             newAccount: accountPda,
             signer: publicKey,
@@ -183,6 +184,7 @@ export const getInitializeAccountTransaction = async (publicKey: PublicKey, data
 
 export const getInitializeAccountTransactionWWithoutAnchor = async (publicKey: PublicKey, data: BN, age: BN, taille: BN): Promise<Transaction | null> => {
     try {
+      console.debug(`getInitializeAccountTransactionWWithoutAnchor publicKey: ${publicKey.toBase58()} data: ${data} age: ${age} taille: ${taille}`);
       const accountSeed = Buffer.from("account");
       const [accountPda] = PublicKey.findProgramAddressSync(
         [
@@ -217,7 +219,8 @@ export const getInitializeAccountTransactionWWithoutAnchor = async (publicKey: P
         return transaction;
       } catch (error) {
         if (error instanceof SendTransactionError) {
-          console.error(error.getLogs(connection));
+          const errorLogs = await error.getLogs(connection);
+          console.error( `getInitializeAccountTransactionWWithoutAnchor: ${errorLogs}` );
         }
         return null;
       }
