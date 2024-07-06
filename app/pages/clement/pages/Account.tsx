@@ -42,7 +42,7 @@ export function Account() {
                         placeholder="Age"
                     />
                 </div>
-                <div>
+                <div className="bg-slate-400">
                     <label className="labelClement">
                         taille
                     </label>
