@@ -101,7 +101,7 @@ export const transferSolana = async (wallet: WalletContextState, destination: Pu
 // export const initializeAccount = async (anchorWallet: AnchorWallet, data: number, age: number): Promise<string | null> => {
 export const initializeAccount = async (anchorWallet: AnchorWallet, data: number, age: number, taille: number): Promise<string | null> => {
     try {
-      console.debug('initializeAccount', data, age, taille);
+      console.debug(`initializeAccount data:${data} age:${age} taille:${taille}`);
 
       // const accountTransaction = await getInitializeAccountTransactionWWithoutAnchor(anchorWallet.publicKey, new BN(data), new BN(age));
       const accountTransaction = await getInitializeAccountTransaction(anchorWallet.publicKey, new BN(data), new BN(age), new BN(taille));
@@ -165,7 +165,7 @@ export const getInitializeAccountTransaction = async (publicKey: PublicKey, data
         new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString())
       );
       // return await program.methods.initialize(data, age, taille) // additonal parameter: taille
-      return await program.methods.initialize(data, age, taille)
+      return await program.methods.initialize(data, age)
         .accounts({
             newAccount: accountPda,
             signer: publicKey,

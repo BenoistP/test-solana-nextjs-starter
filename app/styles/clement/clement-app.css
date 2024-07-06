@@ -40,6 +40,15 @@
   gap: 10px;
 }
 
+.buttonClementActionDisabled {
+  background-color: red;
+  opacity: 0.6;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+
 .buttonClementSignOk {
   background-color: green;
   border: none;

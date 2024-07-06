@@ -1,6 +1,6 @@
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
-import { getAccount, initializeAccount } from "@helpers/solana.helper";
+import { getAccount, getInitializeAccountTransactionWWithoutAnchor, initializeAccount } from "@helpers/solana.helper";
 // import { getAccount, initializeAccount } from "../../../helpers/solana.helper";
 
 export function Account() {
@@ -80,15 +80,31 @@ export function Account() {
                                 if (anchorWallet.publicKey) {
                                     setSendingTransaction(true);
                                     // const initResult = await initializeAccount(anchorWallet, data | 1, age | 20);
-                                    console.debug('onClick Create Account')
+                                    console.debug('onClick Create Account Anchor')
                                     const initResult = await initializeAccount(anchorWallet, data | 1, age | 20, taille | 160);
                                     setTransactionHash(initResult);
                                     setSendingTransaction(false);
                                 }
                             }}
                         >
-                            Create Account
+                            Create Account Anchor
                         </button>
+                        <button className="buttonClementActionDisabled" disabled={true}
+
+                            // onClick={async () => {
+                            //     if (anchorWallet.publicKey) {
+                            //         setSendingTransaction(true);
+                            //         // const initResult = await initializeAccount(anchorWallet, data | 1, age | 20);
+                            //         console.debug('onClick Create Account')
+                            //         const initResult = await getInitializeAccountTransactionWWithoutAnchor( data | 1, age | 20, taille | 160);
+                            //         setTransactionHash(initResult);
+                            //         setSendingTransaction(false);
+                            //     }
+                            // }}
+                        >
+                            Create Account 
+                        </button>
+
                     </div>
                 )
             }
