@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 // import ConnectWalletButton from "@/components/connect-wallet-button"
 // import { siteConfig } from "@/config/site"
 // import { cn } from "@/utils/cn"
