@@ -1,4 +1,3 @@
-import { siteConfig } from "@config/site"
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react"
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
@@ -11,6 +10,7 @@ import React, { useMemo } from "react"
 // import RootLayout from "@/components/layout"
 // import { siteConfig } from "@/config/site"
 import RootLayout from "@components/layout"
+import { siteConfig } from "@config/site"
 
 // Use require instead of import since order matters
 require("@solana/wallet-adapter-react-ui/styles.css")
