@@ -4,12 +4,12 @@
 // import { Dashboard } from './clement/pages/Dashboard';
 // import { getSolanaBalance } from '../helpers/solana.helper';
 
-import Balance from '@clement-pages/Balance';
-import { Dashboard } from '@clement-pages/Dashboard';
-import { getSolanaBalance } from '@helpers/solana.helper';
 import { useWallet } from '@solana/wallet-adapter-react';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
+import Balance from '@clement-pages/Balance';
+import { Dashboard } from '@clement-pages/Dashboard';
+import { getSolanaBalance } from '@helpers/solana.helper';
 
 // MultiButton Next dynamic import
 const WalletMultiButtonDynamic = dynamic(
