@@ -156,6 +156,7 @@ export const getAccount = async (publicKey: PublicKey): Promise<any> => {
 // export const getInitializeAccountTransaction = async (publicKey: PublicKey, data: BN, age: BN): Promise<Transaction | null> => {
 export const getInitializeAccountTransaction = async (publicKey: PublicKey, data: BN, age: BN, taille: BN): Promise<Transaction | null> => {
     try {
+      console.debug(`getInitializeAccountTransaction publicKey:${publicKey} data:${data} age:${age} taille:${taille}`);
       const accountSeed = Buffer.from("account");
       const [accountPda] = PublicKey.findProgramAddressSync(
         [
