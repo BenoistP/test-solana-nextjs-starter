@@ -63,7 +63,7 @@ export function Account() {
                                     // const account = await getAccount(anchorWallet.publicKey)
                                     const account = await getAccount(anchorWallet.publicKey)
                                     if (!account) {
-                                        console.error('Account not found');
+                                        console.warn('Account not found');
                                         alert('Account not found')
                                     }
                                     setAccount(account);
