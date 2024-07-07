@@ -28,12 +28,10 @@ export async function getSolanaBalance(publicKey: string): Promise<number> {
 export const getWalletAuthentication = async (wallet: WalletContextState, message: string): Promise<Uint8Array | null> => {
     try {
       const messageEncoded = new TextEncoder().encode(`${message}`);
-    
       if (!wallet.signMessage) {
         console.error('The wallet does not support message signing');
         return null;
       }
-    
       return await wallet.signMessage(messageEncoded);
     } catch (error) {
       console.error(error);
@@ -106,21 +104,22 @@ export const initializeAccount = async (anchorWallet: AnchorWallet, data: number
       // const accountTransaction = await getInitializeAccountTransactionWWithoutAnchor(anchorWallet.publicKey, new BN(data), new BN(age));
       const accountTransaction = await getInitializeAccountTransaction(anchorWallet.publicKey, new BN(data), new BN(age), new BN(taille));
 
-      console.debug('accountTransaction', accountTransaction);
-  
+      console.debug(`initializeAccount: accountTransaction=${JSON.stringify(accountTransaction)}`);
+
       const recentBlockhash = await getRecentBlockhash();
       if (accountTransaction && recentBlockhash) {
           accountTransaction.feePayer = anchorWallet.publicKey;
           accountTransaction.recentBlockhash = recentBlockhash;
-          console.debug('anchorWallet.signTransaction');
+          console.debug('initializeAccount: anchorWallet.signTransaction');
 
           try {
             const signedTransaction = await anchorWallet.signTransaction(accountTransaction);
-            console.debug('signedTransaction', signedTransaction);
+            console.debug('initializeAccount: signedTransaction', signedTransaction);
             return await connection.sendRawTransaction(signedTransaction.serialize());
           } catch (error) {
             if (error instanceof SendTransactionError) {
-              console.error(error.getLogs(connection));
+              const errorLogs = await error.getLogs(connection);
+              console.error(`initializeAccount: Error: ${errorLogs}`);
             }
           }
           // const signedTransaction = await anchorWallet.signTransaction(accountTransaction);
