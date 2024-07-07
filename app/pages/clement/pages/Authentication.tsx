@@ -1,6 +1,6 @@
-import { getWalletAuthentication, verifyEncodedMessage } from "@helpers/solana.helper";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
+import { getWalletAuthentication, verifyEncodedMessage } from "@helpers/solana.helper";
 // import { getWalletAuthentication, verifyEncodedMessage } from "../../../helpers/solana.helper";
 
 export function Authentication() {
@@ -66,14 +66,14 @@ export function Authentication() {
             }
             {
                 canDecodeMessage !== null && (
-                    <p>
+                    <div>
                         Can decode message: <b>
                         {canDecodeMessage ?
                             <p className="clementOkP">YES</p>
                             :
                             <p className="clementKoP">NO</p>
                         }</b>
-                    </p>
+                    </div>
                 )
             }
             {
