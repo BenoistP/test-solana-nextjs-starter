@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { Link } from '@chakra-ui/next-js'
-import { Button, useColorMode } from '@chakra-ui/react'
-import { MenuIcon } from "lucide-react"
+import { Button, Stack, Switch, useColorMode } from '@chakra-ui/react'
+// import { IconButton } from "./ui/icon-button"
+import { IconButton } from '@chakra-ui/react'
+import { /* MenuIcon, */ Moon, Sun } from "lucide-react"
 import { useRouter } from "next/router"
 import { cn } from "@clement-utils/cn"
 import ConnectWalletButton from "@components/connect-wallet-button"
 import { siteConfig } from "@config/site"
-import { IconButton } from "./ui/icon-button"
 import { Typography } from "./ui/typography"
 
 const MenuItems = [
@@ -77,11 +78,24 @@ export default function Header() {
           <Button onClick={toggleColorMode}>
             Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
           </Button>
+          <Stack direction='row'>
+            <Switch colorScheme='blue' onChange={toggleColorMode}/>
+            <Switch colorScheme='blue' size='lg' onChange={toggleColorMode}/>
+          </Stack>
+          <IconButton
+            isRound={true}
+            variant='solid'
+            colorScheme='teal'
+            aria-label='Switch Theme'
+            fontSize='20px'
+            icon={ colorMode === 'light' ? <Moon /> : <Sun />}
+            onClick={toggleColorMode}
+          />
           <ConnectWalletButton />
-          <IconButton className="md:hidden">
+{/*           <IconButton className="md:hidden">
             <MenuIcon />
           </IconButton>
-        </div>
+ */}        </div>
       </div>
     </header>
   )
