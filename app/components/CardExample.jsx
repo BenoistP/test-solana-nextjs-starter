@@ -17,6 +17,7 @@ const CardExample = () => {
 
 	useEffect(() => { 
 		changeTransfrom(); 
+	// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [transformCount]); 
 
 	const changeTransfrom = () => { 
@@ -49,12 +50,14 @@ const CardExample = () => {
 	return ( 
 		<Box 
 			rounded={"xl"} 
+			// eslint-disable-next-line tailwindcss/no-custom-classname
 			className={`p-auto shadow-xl ${transformText} shadow-orange-600 bottom-20 duration-300 ease-in-out`} 
 		> 
 			<Card 
 				rounded={"xl"} 
 				align="center"
 				bg={darkTheme ? "black" : "white"} 
+				// eslint-disable-next-line tailwindcss/no-custom-classname
 				className={`box `} 
 			> 
 				<CardHeader> 

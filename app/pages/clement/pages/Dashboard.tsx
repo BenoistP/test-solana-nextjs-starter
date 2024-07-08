@@ -1,9 +1,9 @@
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
-import { Account } from "@clement-pages/Account";
-import { Authentication } from "@clement-pages/Authentication";
-import { Transfer } from "@clement-pages/Transfer";
+import Account from "@clement-pages/Account";
+import Authentication from "@clement-pages/Authentication";
+import Transfer from "@clement-pages/Transfer";
 
-export function Dashboard() {
+export default function Dashboard() {
 
     const anchorWallet = useAnchorWallet();
 

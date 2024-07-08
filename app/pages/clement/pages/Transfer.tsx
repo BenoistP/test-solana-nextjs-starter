@@ -3,7 +3,7 @@ import { PublicKey } from "@solana/web3.js";
 import { useState } from "react";
 import { transferSolana } from "@helpers/solana.helper";
 
-export function Transfer() {
+export default function Transfer() {
 
     const wallet = useWallet();
     const [amount, setAmount] = useState<number>(0);
