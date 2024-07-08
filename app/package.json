@@ -32,6 +32,7 @@
     "clean:npm": "npm cache clean --force && npm cache verify"
   },
   "dependencies": {
+    "@chakra-ui/next-js": "^2.2.0",
     "@chakra-ui/react": "^2.8.2",
     "@coral-xyz/anchor": "0.29.0",
     "@emotion/react": "^11.11.4",

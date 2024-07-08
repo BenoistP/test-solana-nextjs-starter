@@ -2,8 +2,9 @@
 // import ConnectWalletButton from "@/components/connect-wallet-button"
 // import { siteConfig } from "@/config/site"
 // import { cn } from "@/utils/cn"
+// import Link from "next/link"
+import { Link } from '@chakra-ui/next-js'
 import { MenuIcon } from "lucide-react"
-import Link from "next/link"
 import { useRouter } from "next/router"
 import { cn } from "@clement-utils/cn"
 import ConnectWalletButton from "@components/connect-wallet-button"
@@ -28,6 +29,10 @@ const MenuItems = [
     text: "About",
     href: "/about",
   },
+  {
+    text: "Card",
+    href: "/card",
+  },
 ]
 
 export default function Header() {
@@ -46,16 +51,27 @@ export default function Header() {
         <ul className="ml-10 hidden items-center gap-6 md:flex">
           {MenuItems.map((item) => (
             <li key={item.text}>
-              <Link
+
+               <Link
                 href={item.href}
                 className={cn("text-gray-600 hover:underline", {
                   "text-gray-900": item.href === "/" ? asPath === item.href : asPath.startsWith(item.href),
                 })}
               >
                 <Typography level="body4" className="font-semibold">
-                  {item.text}
+                  {item.text}(TW)
                 </Typography>
               </Link>
+ 
+               <Link
+                href={item.href}
+                color='blue.400' _hover={{ color: 'blue.500' }}
+               >
+                <Typography level="body4" className="font-semibold">
+                  {item.text}(Chakra)
+                </Typography>
+              </Link>
+
             </li>
           ))}
         </ul>

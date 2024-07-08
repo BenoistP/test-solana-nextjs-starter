@@ -1,3 +1,4 @@
+import { ChakraProvider } from '@chakra-ui/react'
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react"
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
@@ -42,16 +43,17 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         }}
         description={siteConfig.description}
       />
-
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
-          <WalletModalProvider>
-            <RootLayout>
-              <Component {...pageProps} />
-            </RootLayout>
-          </WalletModalProvider>
-        </WalletProvider>
-      </ConnectionProvider>
+      <ChakraProvider>
+        <ConnectionProvider endpoint={endpoint}>
+          <WalletProvider wallets={wallets} autoConnect>
+            <WalletModalProvider>
+              <RootLayout>
+                <Component {...pageProps} />
+              </RootLayout>
+            </WalletModalProvider>
+          </WalletProvider>
+        </ConnectionProvider>
+      </ChakraProvider>
     </>
   )
 }
