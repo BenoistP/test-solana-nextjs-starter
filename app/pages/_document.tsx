@@ -1,3 +1,5 @@
+import { ColorModeScript } from '@chakra-ui/react'
+import theme from '@chakra-ui-theme/theme'
 import Document, { Head, Html, Main, NextScript } from "next/document"
 
 // Need to create a custom _document because i18n support is not compatible with `next export`.
@@ -26,6 +28,7 @@ class MyDocument extends Document {
           <meta name="theme-color" content="#ffffff" />
         </Head>
         <body>
+          <ColorModeScript initialColorMode={theme.config.initialColorMode} />
           <Main />
           <NextScript />
         </body>

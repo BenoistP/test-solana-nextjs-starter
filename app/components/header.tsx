@@ -1,9 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-// import ConnectWalletButton from "@/components/connect-wallet-button"
-// import { siteConfig } from "@/config/site"
-// import { cn } from "@/utils/cn"
-// import Link from "next/link"
 import { Link } from '@chakra-ui/next-js'
+import { Button, useColorMode } from '@chakra-ui/react'
 import { MenuIcon } from "lucide-react"
 import { useRouter } from "next/router"
 import { cn } from "@clement-utils/cn"
@@ -37,9 +34,9 @@ const MenuItems = [
 
 export default function Header() {
   const { asPath } = useRouter()
-
+  const { colorMode, toggleColorMode } = useColorMode()
   return (
-    <header className="fixed left-0 top-0 z-20 w-full border-b border-gray-200 bg-white">
+    <header className="fixed left-0 top-0 z-20 w-full border-b border-gray-200">
       <div className="container mx-auto flex items-center p-4 md:px-6">
         <a href="/" className="flex items-center">
           <img src="/assets/logo.png" className="mr-3 h-8" alt={siteConfig.name} />
@@ -77,6 +74,9 @@ export default function Header() {
         </ul>
 
         <div className="flex flex-1 items-center justify-end gap-2">
+          <Button onClick={toggleColorMode}>
+            Toggle {colorMode === 'light' ? 'Dark' : 'Light'}
+          </Button>
           <ConnectWalletButton />
           <IconButton className="md:hidden">
             <MenuIcon />

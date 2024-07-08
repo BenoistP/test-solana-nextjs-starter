@@ -14,7 +14,8 @@
       "@clement-styles/*": ["styles/clement/*"],
 
       "@config/*": ["config/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@chakra-ui-theme/*": ["theme/chakra-ui/*"]
 
     //  "@components/*": ["components/*"],
       // "@hooks/*": ["components/hooks/*"],
