@@ -6,7 +6,7 @@
       "name": "initialize",
       "accounts": [
         {
-          "name": "newAccount",
+          "name": "userData",
           "isMut": true,
           "isSigner": false
         },
@@ -23,7 +23,7 @@
       ],
       "args": [
         {
-          "name": "data",
+          "name": "rawData",
           "type": "u64"
         },
         {
@@ -35,12 +35,12 @@
   ],
   "accounts": [
     {
-      "name": "NewAccount",
+      "name": "UserData",
       "type": {
         "kind": "struct",
         "fields": [
           {
-            "name": "data",
+            "name": "rawData",
             "type": "u64"
           },
           {

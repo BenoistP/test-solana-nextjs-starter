@@ -1,3 +1,4 @@
+import { BN } from "@coral-xyz/anchor";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 import { getAccount, /* getInitializeAccountTransactionWWithoutAnchor, */ initializeAccount } from "@helpers/solana.helper";
@@ -9,9 +10,9 @@ export function Account() {
     const [transactionHash, setTransactionHash] = useState<string | null>(null);
     const [sendingTransaction, setSendingTransaction] = useState<boolean>(false);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const [account, setAccount] = useState<any | null | undefined>(undefined);
-    const [data, setData] = useState<number>(0);
-    const [age, setAge] = useState<number>(0);
+    // const [account, setAccount] = useState<any | null | undefined>(undefined);
+    const [rawData, setRawData] = useState<number>(123456);
+    const [age, setAge] = useState<number>(33);
     const [taille, setTaille] = useState(0)
 
     return (
@@ -26,8 +27,8 @@ export function Account() {
                     </label>
                     <input
                         type="number"
-                        value={data}
-                        onChange={(e) => setData(parseInt(e.target.value))}
+                        value={rawData}
+                        onChange={(e) => setRawData(parseInt(e.target.value))}
                         placeholder="Data"
                     />
                 </div>
@@ -66,8 +67,16 @@ export function Account() {
                                         console.warn('Account not found');
                                         alert('Account not found')
                                     }
-                                    setAccount(account);
-                                    account?.data && setData(account.data);
+                                    // setAccount(account);
+                                    // account?.rawData && setRawData(account.rawData);
+                                    console.debug('account', account)
+                                    // debugger
+                                    if (account?.rawData) {
+                                        console.debug('rawData', account.rawData)
+                                    }
+                                    // const rawData = new BN(account.rawData)
+                                    // console.debug('rawData', rawData.toNumber())
+                                    account?.rawData && setRawData( new BN(account.rawData).toNumber() );
                                     account?.age && setAge(account.age);
                                     account?.taille && setTaille(account.taille);
                                 }
@@ -79,9 +88,9 @@ export function Account() {
                             onClick={async () => {
                                 if (anchorWallet.publicKey) {
                                     setSendingTransaction(true);
-                                    // const initResult = await initializeAccount(anchorWallet, data | 1, age | 20);
+                                    // const initResult = await initializeAccount(anchorWallet, rawData | 1, age | 20);
                                     console.debug('onClick Create Account Anchor')
-                                    const initResult = await initializeAccount(anchorWallet, data | 1, age | 20, taille | 160);
+                                    const initResult = await initializeAccount(anchorWallet, rawData || 1, age || 20, taille || 160);
                                     setTransactionHash(initResult);
                                     setSendingTransaction(false);
                                 }
@@ -94,9 +103,9 @@ export function Account() {
                             // onClick={async () => {
                             //     if (anchorWallet.publicKey) {
                             //         setSendingTransaction(true);
-                            //         // const initResult = await initializeAccount(anchorWallet, data | 1, age | 20);
+                            //         // const initResult = await initializeAccount(anchorWallet, rawData | 1, age | 20);
                             //         console.debug('onClick Create Account')
-                            //         const initResult = await getInitializeAccountTransactionWWithoutAnchor( data | 1, age | 20, taille | 160);
+                            //         const initResult = await getInitializeAccountTransactionWWithoutAnchor( rawData | 1, age | 20, taille | 160);
                             //         setTransactionHash(initResult);
                             //         setSendingTransaction(false);
                             //     }
@@ -108,13 +117,13 @@ export function Account() {
                     </div>
                 )
             }
-            {
+            {/* {
                 account  && (
                     <p>
-                        Account: <b>{account === null ? 'N/A' : `data: ${account.data} ; age: ${account.age}`}</b>
+                        Account: <b>{account === null ? 'N/A' : `rawData: ${account.rawData} ; age: ${account.age}`}</b>
                     </p>
                 )
-            }
+            } */}
             {
                 sendingTransaction && (
                     <p>
@@ -124,7 +133,7 @@ export function Account() {
             }
             {
                 transactionHash && !sendingTransaction && (
-                    <p>
+                    <p className="clementSmallP">
                         Transaction hash: <b>{transactionHash}</b>
                     </p>
                 )

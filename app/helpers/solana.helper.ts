@@ -2,7 +2,7 @@ import { BN, Idl, Program } from "@coral-xyz/anchor";
 import { AnchorWallet, WalletContextState } from "@solana/wallet-adapter-react";
 import { Connection, LAMPORTS_PER_SOL, PublicKey, SendTransactionError, SystemProgram, Transaction, TransactionInstruction } from "@solana/web3.js";
 import { sign } from 'tweetnacl';
-import { IDL, NEXT_PUBLIC_PROGRAM_ID } from "../imports/consts";
+import { IDL, USER_ACCOUNT_SEED, USER_DATA_PROGRAM_ID } from "../imports/consts";
 
 if (!process.env.NEXT_PUBLIC_RPC_URL) {
     throw new Error("NEXT_PUBLIC_RPC_URL is required");
@@ -13,7 +13,7 @@ const connection = new Connection(process.env.NEXT_PUBLIC_RPC_URL || "", "confir
 // "@coral-xyz/anchor": "0.29.0", changement dans la version 0.30+
 // https://www.anchor-lang.com/release-notes/0.30.0#account-resolution
 // https://solana.stackexchange.com/questions/13076/anchor-idl-different-incorrect-from-solana-playground-idl-generated
-const program = new Program<Idl>(IDL as Idl, NEXT_PUBLIC_PROGRAM_ID, {
+const program = new Program<Idl>(IDL as Idl, USER_DATA_PROGRAM_ID, {
   connection,
 });
 
@@ -117,10 +117,15 @@ export const initializeAccount = async (anchorWallet: AnchorWallet, data: number
             console.debug('initializeAccount: signedTransaction', signedTransaction);
             return await connection.sendRawTransaction(signedTransaction.serialize());
           } catch (error) {
+            console.error('initializeAccount: error', error);
             if (error instanceof SendTransactionError) {
               const errorLogs = await error.getLogs(connection);
+              // debugger;
               console.error(`initializeAccount: Error: ${errorLogs}`);
+            } else {
+              console.error(`initializeAccount: Error: ${error}`);
             }
+
           }
           // const signedTransaction = await anchorWallet.signTransaction(accountTransaction);
           // return await connection.sendRawTransaction(signedTransaction.serialize());
@@ -135,15 +140,17 @@ export const initializeAccount = async (anchorWallet: AnchorWallet, data: number
 export const getAccount = async (publicKey: PublicKey): Promise<any> => {
     try {
       // console.debug('getAccount', publicKey.toBase58());
-      const accountSeed = Buffer.from("account");
+      // const accountSeed = Buffer.from("account");
+
       const [accountPda] = PublicKey.findProgramAddressSync(
         [
-            accountSeed, 
-            publicKey.toBuffer()
-        ], 
-        new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString())
+          USER_ACCOUNT_SEED, // accountSeed,
+          publicKey.toBuffer()
+        ],
+        new PublicKey(USER_DATA_PROGRAM_ID.toString())
       );
-      const fetchAccountPromise = await program.account.newAccount.fetch(accountPda);
+      // const fetchAccountPromise = await program.account.newAccount.fetch(accountPda);
+      const fetchAccountPromise = await program.account.userData.fetch(accountPda);
       // console.debug('fetchAccountPromise', JSON.stringify( (fetchAccountPromise) ) );
       return fetchAccountPromise
     } catch (error) {
@@ -156,19 +163,21 @@ export const getAccount = async (publicKey: PublicKey): Promise<any> => {
 export const getInitializeAccountTransaction = async (publicKey: PublicKey, data: BN, age: BN, taille: BN): Promise<Transaction | null> => {
     try {
       console.debug(`getInitializeAccountTransaction publicKey:${publicKey} data:${data} age:${age} taille:${taille}`);
-      const accountSeed = Buffer.from("account");
+      // const accountSeed = Buffer.from("account");
       const [accountPda] = PublicKey.findProgramAddressSync(
         [
-          accountSeed, 
+          USER_ACCOUNT_SEED, // accountSeed,
           publicKey.toBuffer()
-        ], 
-        new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString())
+        ],
+        new PublicKey(USER_DATA_PROGRAM_ID.toString())
       );
+      console.debug(`getInitializeAccountTransaction accountPda:${accountPda}`);
       // return await program.methods.initialize(data, age, taille) // additonal parameter: taille
       return await program.methods.initialize(data, age)
         .accounts({
-            newAccount: accountPda,
-            signer: publicKey,
+          // newAccount: accountPda,
+          userData: accountPda,
+          signer: publicKey,
             systemProgram: SystemProgram.programId
         })
         .transaction()
@@ -190,7 +199,7 @@ export const getInitializeAccountTransactionWWithoutAnchor = async (publicKey: P
           accountSeed, 
           publicKey.toBuffer()
         ], 
-        new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString())
+        new PublicKey(USER_DATA_PROGRAM_ID.toString())
       );
   
       // u64 u16 u8
@@ -209,7 +218,7 @@ export const getInitializeAccountTransactionWWithoutAnchor = async (publicKey: P
           { pubkey: publicKey, isSigner: true, isWritable: false },
           { pubkey: SystemProgram.programId, isSigner: false, isWritable: false },
         ],
-        programId: new PublicKey(NEXT_PUBLIC_PROGRAM_ID.toString()),
+        programId: new PublicKey(USER_DATA_PROGRAM_ID.toString()),
         data: instructionData,
       });
   
