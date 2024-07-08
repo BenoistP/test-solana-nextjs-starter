@@ -10,7 +10,8 @@ if (!process.env.NEXT_PUBLIC_RPC_URL) {
 // console.log('NEXT_PUBLIC_RPC_URL', process.env.NEXT_PUBLIC_RPC_URL);
 
 const connection = new Connection(process.env.NEXT_PUBLIC_RPC_URL || "", "confirmed");
-// "@coral-xyz/anchor": "0.29.0", changement dans la version 0.30+
+// Use @coral-xyz/anchor 0.29.0
+// do not update to 0.30+ version (breaking changes) until solpg allows exporting new IDL format, see below:
 // https://www.anchor-lang.com/release-notes/0.30.0#account-resolution
 // https://solana.stackexchange.com/questions/13076/anchor-idl-different-incorrect-from-solana-playground-idl-generated
 const program = new Program<Idl>(IDL as Idl, USER_DATA_PROGRAM_ID, {
