@@ -1,9 +1,3 @@
-// import '../styles/clement/clement-app.css'; // global style import moved in app/pages/_app.tsx
-// import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
-// import Balance from './clement/pages/Balance';
-// import { Dashboard } from './clement/pages/Dashboard';
-// import { getSolanaBalance } from '../helpers/solana.helper';
-
 import { useWallet } from '@solana/wallet-adapter-react';
 import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';

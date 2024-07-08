@@ -18,11 +18,6 @@ const Balance: React.FC<BalanceProps> = ({ balance }) => {
             {calculateBalance()}
         </p>
       </div>
-
-    // <div>
-    //         <h2>Balance</h2>
-    //         <p>Your current balance is: {calculateBalance()}</p>
-    //     </div>
     );
 };
 

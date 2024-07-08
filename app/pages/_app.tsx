@@ -7,8 +7,6 @@ import type { AppProps } from "next/app"
 import { DefaultSeo } from "next-seo"
 import type { FC } from "react"
 import React, { useMemo } from "react"
-// import RootLayout from "@/components/layout"
-// import { siteConfig } from "@/config/site"
 import RootLayout from "@components/layout"
 import { siteConfig } from "@config/site"
 
@@ -17,7 +15,6 @@ require("@solana/wallet-adapter-react-ui/styles.css")
 require("../styles/globals.css")
 
 require("../styles/clement/clement-app.css") // Clement's global style
-
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'

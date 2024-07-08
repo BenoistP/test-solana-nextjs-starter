@@ -1,7 +1,6 @@
 import { useWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 import { getWalletAuthentication, verifyEncodedMessage } from "@helpers/solana.helper";
-// import { getWalletAuthentication, verifyEncodedMessage } from "../../../helpers/solana.helper";
 
 export function Authentication() {
 

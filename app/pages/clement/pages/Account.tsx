@@ -2,15 +2,12 @@ import { BN } from "@coral-xyz/anchor";
 import { useAnchorWallet } from "@solana/wallet-adapter-react";
 import { useState } from "react";
 import { getAccount, /* getInitializeAccountTransactionWWithoutAnchor, */ initializeAccount } from "@helpers/solana.helper";
-// import { getAccount, initializeAccount } from "../../../helpers/solana.helper";
 
 export function Account() {
 
     const anchorWallet = useAnchorWallet();
     const [transactionHash, setTransactionHash] = useState<string | null>(null);
     const [sendingTransaction, setSendingTransaction] = useState<boolean>(false);
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    // const [account, setAccount] = useState<any | null | undefined>(undefined);
     const [rawData, setRawData] = useState<number>(123456);
     const [age, setAge] = useState<number>(33);
     const [taille, setTaille] = useState(0)

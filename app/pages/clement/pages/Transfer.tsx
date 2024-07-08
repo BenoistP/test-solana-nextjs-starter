@@ -1,4 +1,3 @@
-// import { transferSolana } from "../../../helpers/solana.helper";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { PublicKey } from "@solana/web3.js";
 import { useState } from "react";
