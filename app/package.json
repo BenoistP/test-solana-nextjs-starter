@@ -22,7 +22,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "postinstall": "npx patch-package -y",
     "preinstall": "npx only-allow yarn",
-    "clean": "clean:build",
+    "clean": "yarn run clean:build",
     "clean:build": "yarn run del-cli ./build/",
     "clean:all": "yarn run clean:build && yarn run clean:next && yarn run clean:node",
     "clean:ALL": "yarn run clean:all && yarn run clean:npm",
