@@ -1,7 +1,11 @@
+// import { cn } from "@/utils/cn"
+// import { forwardRefWithAs } from "@/utils/render"
+
 import React, { HTMLAttributes } from "react"
 import { tv, VariantProps } from "tailwind-variants"
-import { cn } from "@/utils/cn"
-import { forwardRefWithAs } from "@/utils/render"
+import { cn } from "@clement-utils/cn"
+import { forwardRefWithAs } from "@clement-utils/render"
+
 
 const typographyVariants = tv({
   base: "leading-snug",

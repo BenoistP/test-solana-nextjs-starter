@@ -1,4 +1,6 @@
-import { siteConfig } from "@/config/site"
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable @next/next/no-img-element */
+import { siteConfig } from "@config/site"
 
 export default function Footer() {
   return (

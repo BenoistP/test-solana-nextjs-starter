@@ -2,12 +2,12 @@ import { WalletNotConnectedError } from "@solana/wallet-adapter-base"
 import { useConnection, useWallet } from "@solana/wallet-adapter-react"
 import { LAMPORTS_PER_SOL, PublicKey, SystemProgram, Transaction } from "@solana/web3.js"
 import { useState } from "react"
-import ConnectWalletButton from "@/components/connect-wallet-button"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Typography } from "@/components/ui/typography"
-import { cn } from "@/utils/cn"
-import truncate from "@/utils/truncate"
+import { cn } from "@clement-utils/cn"
+import truncate from "@clement-utils/truncate"
+import ConnectWalletButton from "@components/connect-wallet-button"
+import { Button } from "@components/ui/button"
+import { Input } from "@components/ui/input"
+import { Typography } from "@components/ui/typography"
 
 type ResultStatus = "idle" | "success" | "failed"
 
@@ -47,7 +47,7 @@ export default function HomePage() {
   }
 
   return (
-    <div className="mx-auto my-20 flex w-full max-w-md flex-col gap-6 rounded-2xl p-6 shadow-card">
+    <div className="mx-auto my-20 flex w-full max-w-md flex-col gap-6 rounded-2xl p-6">
       <Typography as="h2" level="h6" className="font-bold">
         Transfer
       </Typography>

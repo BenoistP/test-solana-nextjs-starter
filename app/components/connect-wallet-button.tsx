@@ -1,5 +1,6 @@
+// import { cn } from "@/utils/cn"
 import dynamic from "next/dynamic"
-import { cn } from "@/utils/cn"
+import { cn } from "@clement-utils/cn"
 import { buttonVariants } from "./ui/button"
 
 const WalletMultiButtonDynamic = dynamic(

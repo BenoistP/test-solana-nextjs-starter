@@ -1,3 +1,4 @@
+import { ChakraProvider } from '@chakra-ui/react'
 import { WalletAdapterNetwork } from "@solana/wallet-adapter-base"
 import { ConnectionProvider, WalletProvider } from "@solana/wallet-adapter-react"
 import { WalletModalProvider } from "@solana/wallet-adapter-react-ui"
@@ -7,12 +8,14 @@ import type { AppProps } from "next/app"
 import { DefaultSeo } from "next-seo"
 import type { FC } from "react"
 import React, { useMemo } from "react"
-import RootLayout from "@/components/layout"
-import { siteConfig } from "@/config/site"
+import RootLayout from "@components/layout"
+import { siteConfig } from "@config/site"
 
 // Use require instead of import since order matters
 require("@solana/wallet-adapter-react-ui/styles.css")
 require("../styles/globals.css")
+
+require("../styles/clement/clement-app.css") // Clement's global style
 
 const App: FC<AppProps> = ({ Component, pageProps }) => {
   // Can be set to 'devnet', 'testnet', or 'mainnet-beta'
@@ -40,16 +43,17 @@ const App: FC<AppProps> = ({ Component, pageProps }) => {
         }}
         description={siteConfig.description}
       />
-
-      <ConnectionProvider endpoint={endpoint}>
-        <WalletProvider wallets={wallets} autoConnect>
-          <WalletModalProvider>
-            <RootLayout>
-              <Component {...pageProps} />
-            </RootLayout>
-          </WalletModalProvider>
-        </WalletProvider>
-      </ConnectionProvider>
+      <ChakraProvider>
+        <ConnectionProvider endpoint={endpoint}>
+          <WalletProvider wallets={wallets} autoConnect>
+            <WalletModalProvider>
+              <RootLayout>
+                <Component {...pageProps} />
+              </RootLayout>
+            </WalletModalProvider>
+          </WalletProvider>
+        </ConnectionProvider>
+      </ChakraProvider>
     </>
   )
 }
