@@ -19,10 +19,14 @@ const program = new Program<Idl>(IDL as Idl, USER_DATA_PROGRAM_ID, {
 
 
 export async function getSolanaBalance(publicKey: string): Promise<number> {
+  try {
     const balanceInLamports = await connection.getBalance(new PublicKey(publicKey));
     const balanceInSol = balanceInLamports / LAMPORTS_PER_SOL;
-  
     return balanceInSol;
+  } catch (error) {
+    console.error(error);
+    return 0;
+  }
 }
 
 export const getWalletAuthentication = async (wallet: WalletContextState, message: string): Promise<Uint8Array | null> => {
